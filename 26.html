@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 상당초등학교 6학년 제주도 현장체험학습 교사용 스마트 안내서</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#1E3A8A',
+                            navy: '#0F172A',
+                            teal: '#0D9488',
+                            orange: '#EA580C',
+                            bg: '#F8FAFC'
+                        }
+                    },
+                    fontFamily: {
+                        gowun: ['"Gowun Dodum"', 'sans-serif'],
+                        sans: ['"Noto Sans KR"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #F1F5F9;
+            color: #1E293B;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .font-header {
+            font-family: 'Gowun Dodum', sans-serif;
+        }
+        .tab-active {
+            background-color: #1E3A8A !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 4px 6px -1px rgba(30, 58, 138, 0.3);
+        }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            body { background: white !important; color: black !important; }
+            .shadow-sm, .shadow-md, .shadow-lg { box-shadow: none !important; }
+            .border { border-color: #CBD5E1 !important; }
+        }
+    </style>
+</head>
+<body class="pb-20 md:pb-10">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 bg-slate-900 text-white shadow-md border-b border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-500 flex items-center justify-center font-bold text-xl shadow-inner">
+                    📋
+                </div>
+                <div>
+                    <span class="text-[10px] font-semibold text-amber-400 tracking-wider uppercase block">2026 상당초등학교 6학년</span>
+                    <h1 class="font-header font-bold text-base md:text-lg leading-tight">제주도 수학여행 교사용 스마트 안내서</h1>
+                </div>
+            </div>
+            <button onclick="window.print()" class="no-print bg-amber-500 hover:bg-amber-600 text-slate-900 px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 shadow">
+                <i class="fa-solid fa-print"></i>
+                <span class="hidden sm:inline">인쇄 / PDF</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sub Summary Bar -->
+    <section class="bg-slate-800 text-slate-200 border-b border-slate-700 text-xs py-2 px-4 shadow-inner">
+        <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+                <span><i class="fa-solid fa-calendar-check text-amber-400 mr-1"></i> 2026.10.20(화) ~ 10.22(목) [2박 3일]</span>
+                <span class="hidden md:inline">|</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-hotel text-teal-400 mr-1"></i> 제주호텔 휘슬락 (064-795-7005)</span>
+            </div>
+            <div class="flex items-center space-x-2 font-medium">
+                <span class="bg-blue-900/80 text-blue-200 px-2 py-0.5 rounded border border-blue-700">총 122명</span>
+                <span>(학생 111명 / 인솔 11명)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="max-w-5xl mx-auto px-4 py-5 space-y-5">
+
+        <!-- Navigation Tabs (Mobile Scrollable) -->
+        <nav class="no-print flex space-x-1.5 overflow-x-auto bg-slate-200 p-1.5 rounded-2xl text-xs font-semibold text-slate-600 shadow-inner">
+            <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn flex-1 min-w-[90px] py-2.5 px-3 rounded-xl text-center transition tab-active">
+                <i class="fa-solid fa-circle-info mr-1"></i>개요·연락망
+            </button>
+            <button onclick="switchTab('itinerary')" id="tab-itinerary" class="tab-btn flex-1 min-w-[90px] py-2.5 px-3 rounded-xl text-center transition hover:text-slate-900">
+                <i class="fa-solid fa-route mr-1"></i>3일 일정표
+            </button>
+            <button onclick="switchTab('vehicles')" id="tab-vehicles" class="tab-btn flex-1 min-w-[90px] py-2.5 px-3 rounded-xl text-center transition hover:text-slate-900">
+                <i class="fa-solid fa-bus mr-1"></i>차량 배정표
+            </button>
+            <button onclick="switchTab('rooms')" id="tab-rooms" class="tab-btn flex-1 min-w-[90px] py-2.5 px-3 rounded-xl text-center transition hover:text-slate-900">
+                <i class="fa-solid fa-bed mr-1"></i>숙소·야간지도
+            </button>
+            <button onclick="switchTab('safety')" id="tab-safety" class="tab-btn flex-1 min-w-[90px] py-2.5 px-3 rounded-xl text-center transition hover:text-slate-900">
+                <i class="fa-solid fa-shield-cat mr-1 text-rose-500"></i>안전·대피
+            </button>
+        </nav>
+
+        <!-- ================= TAB 1: OVERVIEW & CONTACTS ================= -->
+        <section id="sec-overview" class="tab-content space-y-4">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                <h2 class="font-header font-bold text-lg text-brand-navy flex items-center border-b border-slate-100 pb-3">
+                    <i class="fa-solid fa-compass text-brand-teal mr-2"></i>
+                    수학여행 기본 개요 및 총괄 현황
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs mt-3">
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-slate-800 text-sm flex items-center">
+                            <i class="fa-solid fa-flag text-amber-500 mr-1.5"></i> 행 사 명
+                        </h3>
+                        <p class="text-slate-600">2026학년도 상당초등학교 6학년 제주도 현장체험학습 (수학여행)</p>
+                        <div class="border-t border-slate-200 pt-2 grid grid-cols-2 gap-2 text-slate-700">
+                            <div><strong>기간:</strong> 2026.10.20(화) ~ 10.22(목)</div>
+                            <div><strong>숙소:</strong> 제주호텔 휘슬락</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-slate-800 text-sm flex items-center">
+                            <i class="fa-solid fa-plane text-blue-500 mr-1.5"></i> 항공편 (진에어)
+                        </h3>
+                        <div class="space-y-1 text-slate-700">
+                            <div><strong>[출발] 10/20(화):</strong> 청주 출발 11:35 ➔ 제주 도착 12:35 (진에어)</div>
+                            <div><strong>[복귀] 10/22(목):</strong> 제주 출발 14:25 ➔ 청주 도착 15:25 (진에어)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Roster Breakdown Table -->
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                <h3 class="font-header font-bold text-base text-slate-900 flex items-center justify-between">
+                    <span>👥 학급별 참가 학생 및 인솔자 현황</span>
+                    <span class="text-xs text-slate-500 font-normal">총 학생 111명 (전원참석)</span>
+                </h3>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs text-center border-collapse">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700 font-bold border-y border-slate-200">
+                                <th class="p-2.5">학급</th>
+                                <th class="p-2.5">남학생</th>
+                                <th class="p-2.5">여학생</th>
+                                <th class="p-2.5">학생 소계</th>
+                                <th class="p-2.5 text-left">담임 교사</th>
+                                <th class="p-2.5">비고</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 text-slate-700">
+                            <tr>
+                                <td class="p-2.5 font-bold">6학년 1반</td>
+                                <td class="p-2.5">10명</td>
+                                <td class="p-2.5">13명</td>
+                                <td class="p-2.5 font-semibold text-brand-blue">23명</td>
+                                <td class="p-2.5 text-left font-medium">조은아 (업무담당)</td>
+                                <td class="p-2.5 text-emerald-600 font-medium">전원참석</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-bold">6학년 2반</td>
+                                <td class="p-2.5">11명</td>
+                                <td class="p-2.5">11명</td>
+                                <td class="p-2.5 font-semibold text-brand-blue">22명</td>
+                                <td class="p-2.5 text-left font-medium">나환웅</td>
+                                <td class="p-2.5 text-emerald-600 font-medium">전원참석</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-bold">6학년 3반</td>
+                                <td class="p-2.5">12명</td>
+                                <td class="p-2.5">11명</td>
+                                <td class="p-2.5 font-semibold text-brand-blue">23명</td>
+                                <td class="p-2.5 text-left font-medium">송민경</td>
+                                <td class="p-2.5 text-emerald-600 font-medium">전원참석</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-bold">6학년 4반</td>
+                                <td class="p-2.5">11명</td>
+                                <td class="p-2.5">11명</td>
+                                <td class="p-2.5 font-semibold text-brand-blue">22명</td>
+                                <td class="p-2.5 text-left font-medium">백영미</td>
+                                <td class="p-2.5 text-emerald-600 font-medium">전원참석</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-bold">6학년 5반</td>
+                                <td class="p-2.5">11명</td>
+                                <td class="p-2.5">10명</td>
+                                <td class="p-2.5 font-semibold text-brand-blue">21명</td>
+                                <td class="p-2.5 text-left font-medium">김진경</td>
+                                <td class="p-2.5 text-emerald-600 font-medium">전원참석</td>
+                            </tr>
+                            <tr class="bg-amber-50/80 font-bold text-slate-900 border-t-2 border-slate-300">
+                                <td class="p-2.5">합 계</td>
+                                <td class="p-2.5">55명</td>
+                                <td class="p-2.5">56명</td>
+                                <td class="p-2.5 text-brand-orange text-sm">111명</td>
+                                <td class="p-2.5 text-left" colspan="2">인솔 교직원 11명 (총원 122명)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Emergency Directory & Quick Phone Buttons -->
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                <h3 class="font-header font-bold text-base text-rose-700 flex items-center">
+                    <i class="fa-solid fa-phone-volume mr-2"></i> 비상 연락처 및 관련 기관
+                </h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 text-xs">
+                    <a href="tel:064-795-7005" class="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition flex items-center justify-between">
+                        <div>
+                            <span class="text-slate-500 block">제주호텔 휘슬락 프론트</span>
+                            <strong class="text-slate-900 text-sm">064-795-7005</strong>
+                        </div>
+                        <i class="fa-solid fa-phone text-teal-600 text-base"></i>
+                    </a>
+
+                    <a href="tel:064-710-3933" class="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition flex items-center justify-between">
+                        <div>
+                            <span class="text-slate-500 block">제주 안심 수학여행 서비스</span>
+                            <strong class="text-slate-900 text-sm">064-710-3933</strong>
+                        </div>
+                        <i class="fa-solid fa-phone text-teal-600 text-base"></i>
+                    </a>
+
+                    <a href="tel:119" class="p-3 rounded-xl border border-rose-200 bg-rose-50 hover:bg-rose-100 transition flex items-center justify-between">
+                        <div>
+                            <span class="text-rose-600 font-bold block">119 긴급구조 (제주소방서)</span>
+                            <strong class="text-rose-900 text-sm">064-729-0119 / 119</strong>
+                        </div>
+                        <i class="fa-solid fa-truck-medical text-rose-600 text-base"></i>
+                    </a>
+
+                    <a href="tel:064-717-1900" class="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition flex items-center justify-between">
+                        <div>
+                            <span class="text-slate-500 block">제주대학교병원 응급실</span>
+                            <strong class="text-slate-900 text-sm">064-717-1900~4</strong>
+                        </div>
+                        <i class="fa-solid fa-hospital text-blue-600 text-base"></i>
+                    </a>
+
+                    <a href="tel:043-270-5864" class="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition flex items-center justify-between">
+                        <div>
+                            <span class="text-slate-500 block">청주교육지원청 (당직 299-3070)</span>
+                            <strong class="text-slate-900 text-sm">043-270-5864</strong>
+                        </div>
+                        <i class="fa-solid fa-building text-slate-600 text-base"></i>
+                    </a>
+
+                    <a href="tel:043-290-2162" class="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition flex items-center justify-between">
+                        <div>
+                            <span class="text-slate-500 block">충북도교육청 학교안전팀</span>
+                            <strong class="text-slate-900 text-sm">043-290-2162</strong>
+                        </div>
+                        <i class="fa-solid fa-building-shield text-slate-600 text-base"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: ITINERARY ================= -->
+        <section id="sec-itinerary" class="tab-content space-y-4 hidden">
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                <div>
+                    <h2 class="font-header font-bold text-lg text-slate-900">🗺️ 2박 3일 상세 인솔 일정표</h2>
+                    <p class="text-xs text-slate-500">2026학년도 상당초 제주도 현장체험학습 공식 일정</p>
+                </div>
+                <div class="no-print flex space-x-1">
+                    <button onclick="setDayFilter(1)" id="dayFilter-1" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-brand-blue text-white shadow">1일차</button>
+                    <button onclick="setDayFilter(2)" id="dayFilter-2" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200">2일차</button>
+                    <button onclick="setDayFilter(3)" id="dayFilter-3" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200">3일차</button>
+                </div>
+            </div>
+
+            <!-- DAY 1 SCHEDULE -->
+            <div id="dayCard-1" class="day-schedule-card space-y-3">
+                <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl text-xs text-amber-900 font-semibold flex items-center space-x-2">
+                    <i class="fa-solid fa-plane-departure text-amber-600 text-base"></i>
+                    <span><strong>1일차 (10/20 화):</strong> 청주공항 출발(11:35 진에어) ➔ 제주공항 도착(12:35) | 신화월드 탐방 & 화재대피훈련</span>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                    <table class="w-full text-xs text-left">
+                        <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3 w-28">시간</th>
+                                <th class="p-3">장소 / 일정</th>
+                                <th class="p-3">세부 내용 및 인솔 지도 핵심 사항</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-3 font-bold text-brand-blue">09:00 - 10:30</td>
+                                <td class="p-3 font-semibold text-slate-900">상당초 ➔ 청주공항</td>
+                                <td class="p-3 text-slate-600">관내 버스 3대 승차 및 인원점검, 안전벨트 착용 지도</td>
+                            </tr>
+                            <tr class="bg-blue-50/50">
+                                <td class="p-3 font-bold text-brand-blue">10:30 - 11:35</td>
+                                <td class="p-3 font-semibold text-slate-900">청주공항 탑승수속</td>
+                                <td class="p-3 text-slate-600">진에어 탑승 수속, 신분 확인 및 보안검색대 지도</td>
+                            </tr>
+                            <tr class="bg-amber-100/60 font-medium">
+                                <td class="p-3 font-bold text-amber-800">11:35 - 12:35</td>
+                                <td class="p-3 font-bold text-amber-900">✈️ 청주 ➔ 제주 이동</td>
+                                <td class="p-3 text-amber-900">진에어 항공기 탑승 (기내 질서 및 안전벨트 준수)</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-brand-blue">12:35 - 13:00</td>
+                                <td class="p-3 font-semibold text-slate-900">제주공항 도착</td>
+                                <td class="p-3 text-slate-600">제주 관외 버스 4대 승차 및 수하물 확인</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-brand-blue">13:00 - 13:50</td>
+                                <td class="p-3 font-semibold text-slate-900">🍱 중식 (탐라향)</td>
+                                <td class="p-3 text-slate-600">식사 예절 및 알레르기/위생 지도</td>
+                            </tr>
+                            <tr class="bg-purple-50/50">
+                                <td class="p-3 font-bold text-purple-700">14:30 - 17:00</td>
+                                <td class="p-3 font-semibold text-purple-900">🎢 신화월드 탐방</td>
+                                <td class="p-3 text-slate-600">모둠별 체험, 놀이기구 안전수칙 준수, 미션지 1 작성 지도</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-brand-blue">17:40 - 18:40</td>
+                                <td class="p-3 font-semibold text-slate-900">🍽️ 석식 (칠성뷔페)</td>
+                                <td class="p-3 text-slate-600">질서있는 식사 지도 및 잔반 줄이기</td>
+                            </tr>
+                            <tr class="bg-rose-50 font-medium">
+                                <td class="p-3 font-bold text-rose-700">19:00 - 19:30</td>
+                                <td class="p-3 font-bold text-rose-900">🏨 체크인 & 대피훈련</td>
+                                <td class="p-3 text-rose-900">휘슬락 호텔 체크인, **19:10 객실 화재 대피 훈련 실시**</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-slate-500">22:30 ~</td>
+                                <td class="p-3 font-semibold text-slate-700">점호 및 취침</td>
+                                <td class="p-3 text-slate-600">야간 순찰 담당 교사 근무 시작 (객실 간 이동 금지)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- DAY 2 SCHEDULE -->
+            <div id="dayCard-2" class="day-schedule-card space-y-3 hidden">
+                <div class="bg-teal-50 border border-teal-200 p-3 rounded-xl text-xs text-teal-900 font-semibold flex items-center space-x-2">
+                    <i class="fa-solid fa-water text-teal-600 text-base"></i>
+                    <span><strong>2일차 (10/21 수):</strong> 서귀포 해양 및 문화 탐방 | 정방폭포 & 제주제트(주상절리)</span>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                    <table class="w-full text-xs text-left">
+                        <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3 w-28">시간</th>
+                                <th class="p-3">장소 / 일정</th>
+                                <th class="p-3">세부 내용 및 인솔 지도 핵심 사항</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-3 font-bold text-slate-600">07:00 - 08:30</td>
+                                <td class="p-3 font-semibold text-slate-900">기상 및 조식</td>
+                                <td class="p-3 text-slate-600">호텔 뷔페 식사 및 학생 건강상태 점검</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-brand-blue">09:00 - 10:30</td>
+                                <td class="p-3 font-semibold text-slate-900">🎨 테마파크 툰</td>
+                                <td class="p-3 text-slate-600">창의 체험 및 모둠별 안전 지도</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-brand-blue">10:40 - 11:40</td>
+                                <td class="p-3 font-semibold text-slate-900">📺 노형수퍼마켙</td>
+                                <td class="p-3 text-slate-600">미디어아트 관람, 어두운 실내 관람로 안전 유의</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-brand-blue">12:10 - 13:00</td>
+                                <td class="p-3 font-semibold text-slate-900">🍱 중식 (무송)</td>
+                                <td class="p-3 text-slate-600">식사 및 오후 해양활동 대비 멀미약/이상 점검</td>
+                            </tr>
+                            <tr class="bg-teal-50/50">
+                                <td class="p-3 font-bold text-teal-700">13:40 - 14:30</td>
+                                <td class="p-3 font-semibold text-teal-900">🌊 정방폭포</td>
+                                <td class="p-3 text-slate-600">폭포 미끄러운 바위 주의, 난간 추락 주의, 미션 3 작성</td>
+                            </tr>
+                            <tr class="bg-blue-50/80 font-medium">
+                                <td class="p-3 font-bold text-blue-700">15:00 - 16:30</td>
+                                <td class="p-3 font-bold text-blue-900">🛥️ 제주제트 (주상절리)</td>
+                                <td class="p-3 text-blue-900">구명조끼 필히 착용, 승하차 시 발빠짐 주의 지도</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-brand-blue">17:30 - 18:30</td>
+                                <td class="p-3 font-semibold text-slate-900">🍽️ 석식 (한라정)</td>
+                                <td class="p-3 text-slate-600">저녁 식사 및 이동 인원점검</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-slate-500">22:30 ~</td>
+                                <td class="p-3 font-semibold text-slate-700">점호 및 취침</td>
+                                <td class="p-3 text-slate-600">2차 야간 순찰 교사 복도 및 환자 점검</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- DAY 3 SCHEDULE -->
+            <div id="dayCard-3" class="day-schedule-card space-y-3 hidden">
+                <div class="bg-indigo-50 border border-indigo-200 p-3 rounded-xl text-xs text-indigo-900 font-semibold flex items-center space-x-2">
+                    <i class="fa-solid fa-plane-arrival text-indigo-600 text-base"></i>
+                    <span><strong>3일차 (10/22 목):</strong> 박물관 탐구 ➔ 귀교 | 복귀 항공편(14:25 진에어) ➔ 상당초 16:30 해산</span>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                    <table class="w-full text-xs text-left">
+                        <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3 w-28">시간</th>
+                                <th class="p-3">장소 / 일정</th>
+                                <th class="p-3">세부 내용 및 인솔 지도 핵심 사항</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="bg-amber-50/50">
+                                <td class="p-3 font-bold text-amber-800">07:30 - 08:50</td>
+                                <td class="p-3 font-bold text-amber-900">퇴실 점검 및 조식</td>
+                                <td class="p-3 text-amber-900">객실 짐 정돈, 분실물 점검 및 휘슬락 체크아웃</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-brand-blue">09:00 - 09:50</td>
+                                <td class="p-3 font-semibold text-slate-900">🏛️ 제주민속자연사박물관</td>
+                                <td class="p-3 text-slate-600">제주 역사·민속 문화 관람, 정숙 지도</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-brand-blue">10:10 - 11:10</td>
+                                <td class="p-3 font-semibold text-slate-900">💻 넥슨컴퓨터박물관</td>
+                                <td class="p-3 text-slate-600">디지털 역사 관람, 디지털 기기 체험 지도</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-brand-blue">11:30 - 12:20</td>
+                                <td class="p-3 font-semibold text-slate-900">🍱 중식 (이레한정식)</td>
+                                <td class="p-3 text-slate-600">제주에서의 마지막 식사 및 전체 인원 재확인</td>
+                            </tr>
+                            <tr class="bg-blue-50">
+                                <td class="p-3 font-bold text-blue-700">12:40 - 14:25</td>
+                                <td class="p-3 font-bold text-blue-900">제주공항 수속</td>
+                                <td class="p-3 text-slate-600">수하물 위탁, 보안검색 및 진에어 탑승대기</td>
+                            </tr>
+                            <tr class="bg-amber-100/60 font-medium">
+                                <td class="p-3 font-bold text-amber-800">14:25 - 15:25</td>
+                                <td class="p-3 font-bold text-amber-900">✈️ 제주 ➔ 청주 이동</td>
+                                <td class="p-3 text-amber-900">진에어 탑승 및 이동</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-brand-blue">15:25 - 16:30</td>
+                                <td class="p-3 font-semibold text-slate-900">청주공항 ➔ 상당초</td>
+                                <td class="p-3 text-slate-600">관내 버스 3대 탑승 후 귀교</td>
+                            </tr>
+                            <tr class="bg-emerald-50 font-bold">
+                                <td class="p-3 text-emerald-700">16:30</td>
+                                <td class="p-3 text-emerald-900">상당초 도착 및 해산</td>
+                                <td class="p-3 text-emerald-900">학생 인계 및 안전 귀가 지도</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: VEHICLES ================= -->
+        <section id="sec-vehicles" class="tab-content space-y-4 hidden">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3 flex-wrap gap-2">
+                    <h2 class="font-header font-bold text-lg text-slate-900 flex items-center">
+                        <i class="fa-solid fa-bus text-brand-orange mr-2"></i>
+                        버스 시각화 좌석 배치도 (제주 관외 1~4호차)
+                    </h2>
+                    <!-- Bus Selector Tabs -->
+                    <div class="no-print flex space-x-1">
+                        <button onclick="switchBusMap(1)" id="busMapBtn-1" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-brand-teal text-white shadow">1호차(여)</button>
+                        <button onclick="switchBusMap(2)" id="busMapBtn-2" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200">2호차(여)</button>
+                        <button onclick="switchBusMap(3)" id="busMapBtn-3" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200">3호차(남)</button>
+                        <button onclick="switchBusMap(4)" id="busMapBtn-4" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200">4호차(남)</button>
+                    </div>
+                </div>
+
+                <!-- Interactive Visual Bus Diagram Canvas -->
+                <div id="busDiagramContainer" class="bg-slate-50 p-4 rounded-2xl border border-slate-200 max-w-xl mx-auto space-y-3">
+                    
+                    <!-- Bus Top Header -->
+                    <div class="flex items-center justify-between bg-slate-800 text-white p-3 rounded-xl text-xs font-bold shadow">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-7 h-7 rounded-lg bg-amber-500 text-slate-900 flex items-center justify-center font-extrabold" id="busNumberBadge">1</span>
+                            <span id="busTitleText">제주 1호차 (여학생 28명 + 인솔 4명)</span>
+                        </div>
+                        <span class="text-slate-300 text-[11px]" id="busInsolText">인솔: 최순이, 오승영, 이주현, 조은아</span>
+                    </div>
+
+                    <!-- Bus Layout Front Bar (Driver & Entrance) -->
+                    <div class="flex justify-between items-center text-xs text-slate-500 bg-slate-200 p-2.5 rounded-xl font-bold">
+                        <div class="bg-slate-300 border border-slate-400 px-3 py-1 rounded-lg text-slate-700 flex items-center">
+                            <i class="fa-solid fa-steering-wheel mr-1.5 text-slate-600"></i> 운전석
+                        </div>
+                        <div class="text-[11px] text-slate-400">앞 (Front)</div>
+                        <div class="bg-amber-100 text-amber-800 border border-amber-300 px-3 py-1 rounded-lg flex items-center">
+                            출입문 <i class="fa-solid fa-arrow-right-to-bracket ml-1.5"></i>
+                        </div>
+                    </div>
+
+                    <!-- Grid Seats Layout (11 Rows) -->
+                    <div id="busSeatsGrid" class="space-y-2 text-xs font-medium pt-1">
+                        <!-- Dynamic Seat Rows Rendered by JS -->
+                    </div>
+
+                    <!-- Bus Rear Footer -->
+                    <div class="text-center text-[11px] text-slate-400 bg-slate-200/60 py-1.5 rounded-xl border border-slate-200 font-semibold">
+                        뒤 (Rear 41 ~ 45번 좌석)
+                    </div>
+                </div>
+
+                <!-- Legend -->
+                <div class="flex items-center justify-center space-x-4 text-xs pt-1 text-slate-600">
+                    <span class="flex items-center"><span class="w-3 h-3 rounded bg-blue-100 border border-blue-300 mr-1.5"></span> 학생 좌석</span>
+                    <span class="flex items-center"><span class="w-3 h-3 rounded bg-amber-100 border border-amber-300 mr-1.5"></span> 인솔/안전요원</span>
+                    <span class="flex items-center"><span class="w-3 h-3 rounded bg-slate-100 border border-slate-300 mr-1.5"></span> 빈 좌석</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 4: ROOMS & NIGHT DUTY ================= -->
+        <section id="sec-rooms" class="tab-content space-y-4 hidden">
+            <!-- Hotel & Night Guard Schedule -->
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3 flex-wrap gap-2">
+                    <h2 class="font-header font-bold text-lg text-slate-900 flex items-center">
+                        <i class="fa-solid fa-hotel text-indigo-600 mr-2"></i>
+                        제주호텔 휘슬락 층별/객실별 방 배정 및 교사실 배치표
+                    </h2>
+                    <span class="text-xs bg-indigo-50 border border-indigo-200 text-indigo-800 px-3 py-1.5 rounded-xl font-bold">프론트: 064-795-7005</span>
+                </div>
+
+                <!-- Floor Quick Filter Tabs -->
+                <div class="flex space-x-1.5 overflow-x-auto pb-1 text-xs font-bold no-print">
+                    <button onclick="filterFloor('all')" id="flrBtn-all" class="flr-btn px-3 py-1.5 rounded-xl bg-brand-blue text-white shadow">전체 층 (3~7층)</button>
+                    <button onclick="filterFloor('3')" id="flrBtn-3" class="flr-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200">3층 (여학생/여교사1)</button>
+                    <button onclick="filterFloor('4')" id="flrBtn-4" class="flr-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200">4층 (여학생/여교사2)</button>
+                    <button onclick="filterFloor('5')" id="flrBtn-5" class="flr-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200">5층 (남학생/남교사1,2/보건실)</button>
+                    <button onclick="filterFloor('6')" id="flrBtn-6" class="flr-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200">6층 (남학생/남교사3/격리실)</button>
+                    <button onclick="filterFloor('7')" id="flrBtn-7" class="flr-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200">7층 (여학생/여교사3)</button>
+                </div>
+
+                <!-- Teacher Rooms Quick Summary Bar -->
+                <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl text-xs space-y-1">
+                    <strong class="text-amber-950 block text-sm"><i class="fa-solid fa-user-tie text-amber-600 mr-1.5"></i> 교사실 및 중요 연결 객실 위치</strong>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1.5 text-amber-900 font-medium pt-1">
+                        <div>• <strong>0310호:</strong> 여교사1 (최순이 교장)</div>
+                        <div>• <strong>0415호:</strong> 여교사2 (송민경, 백영미)</div>
+                        <div>• <strong>0515호:</strong> 남교사1 (오승영, 이주현)</div>
+                        <div>• <strong>0537호:</strong> 남교사2 (나환웅, 김진경)</div>
+                        <div>• <strong>0538호:</strong> 🏥 격리실1/보건실 (신성미)</div>
+                        <div>• <strong>0637호:</strong> 남교사3 (박현수, 기우성)</div>
+                        <div>• <strong>0638호:</strong> 🏥 격리실2</div>
+                        <div>• <strong>0716호:</strong> 여교사3 (조은아 업무담당)</div>
+                    </div>
+                </div>
+
+                <!-- Floor 3 Grid -->
+                <div class="flr-sec space-y-2" data-floor="3">
+                    <h3 class="font-bold text-slate-800 text-sm border-b border-slate-200 pb-1.5 flex items-center justify-between">
+                        <span>🏢 3층 객실 배정표 (여학생 / 여교사1)</span>
+                        <span class="text-xs font-normal text-slate-500">6개 객실</span>
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 text-xs">
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0304호</span>
+                                <span class="text-blue-700">6-1반 여1 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">김하람, 양다영, 윤서아</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0305호</span>
+                                <span class="text-blue-700">6-1반 여2 (2명)</span>
+                            </div>
+                            <p class="text-slate-700">김하진, 윤이나</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0306호</span>
+                                <span class="text-blue-700">6-3반 여1 (2명)</span>
+                            </div>
+                            <p class="text-slate-700">심민지, 최태린</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0307호</span>
+                                <span class="text-blue-700">6-3반 여2 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">홍소율, 음선우, 신예진</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0308호</span>
+                                <span class="text-blue-700">6-3반 여3 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">성아윤, 정다은, 이예담</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0309호</span>
+                                <span class="text-blue-700">6-3반 여4 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">권하람, 이서율, 이시윤</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border-2 border-amber-400 bg-amber-50 shadow-sm col-span-1 sm:col-span-2 md:col-span-3">
+                            <div class="flex justify-between items-center font-bold text-amber-900 mb-1">
+                                <span class="bg-amber-500 text-slate-900 px-2 py-0.5 rounded-md text-[11px]">0310호 (여교실)</span>
+                                <span class="text-amber-800">👩‍🏫 여교사 1 (총괄 인솔책임)</span>
+                            </div>
+                            <p class="text-amber-950 font-semibold">최순이 (교장선생님)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floor 4 Grid -->
+                <div class="flr-sec space-y-2 pt-2" data-floor="4">
+                    <h3 class="font-bold text-slate-800 text-sm border-b border-slate-200 pb-1.5 flex items-center justify-between">
+                        <span>🏢 4층 객실 배정표 (여학생 / 여교사2)</span>
+                        <span class="text-xs font-normal text-slate-500">12개 객실</span>
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 text-xs">
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0406호</span>
+                                <span class="text-blue-700">6-2반 여1 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">김지원, 노지아, 연율</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0407호</span>
+                                <span class="text-blue-700">6-2반 여2 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">김지윤, 윤서율, 손예원</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0408호</span>
+                                <span class="text-blue-700">6-2반 여3 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">이율희, 장민정, 박소율</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0409호</span>
+                                <span class="text-blue-700">6-2반 여4 (2명)</span>
+                            </div>
+                            <p class="text-slate-700">유이레, 조여원</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0410호</span>
+                                <span class="text-blue-700">6-4반 여1 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">권은비, 최보나, 최율희</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border-2 border-amber-400 bg-amber-50 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-amber-900 mb-1">
+                                <span class="bg-amber-500 text-slate-900 px-2 py-0.5 rounded-md text-[11px]">0415호 (교사실)</span>
+                                <span class="text-amber-800">👩‍🏫 여교사 2</span>
+                            </div>
+                            <p class="text-amber-950 font-semibold">송민경(6-3담임), 백영미(6-4담임)</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0432호</span>
+                                <span class="text-blue-700">6-4반 여2 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">권예준, 이은솔, 한예원</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0433호</span>
+                                <span class="text-blue-700">6-4반 여3 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">강다윤, 오아현, 오예진</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0434호</span>
+                                <span class="text-blue-700">6-4반 여4 (2명)</span>
+                            </div>
+                            <p class="text-slate-700">이하린, 임지효</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0435호</span>
+                                <span class="text-blue-700">6-5반 여1 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">이다정, 이가영, 신미경</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0436호</span>
+                                <span class="text-blue-700">6-5반 여2 (2명)</span>
+                            </div>
+                            <p class="text-slate-700">고채원, 유예은</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0437호</span>
+                                <span class="text-blue-700">6-5반 여3 (2명)</span>
+                            </div>
+                            <p class="text-slate-700">유혜선, 류수연</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0438호</span>
+                                <span class="text-blue-700">6-5반 여4 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">정다은, 김가은, 육세연</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floor 5 Grid -->
+                <div class="flr-sec space-y-2 pt-2" data-floor="5">
+                    <h3 class="font-bold text-slate-800 text-sm border-b border-slate-200 pb-1.5 flex items-center justify-between">
+                        <span>🏢 5층 객실 배정표 (남학생 / 남교사1,2 / 보건실)</span>
+                        <span class="text-xs font-normal text-slate-500">13개 객실</span>
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 text-xs">
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0506호</span>
+                                <span class="text-emerald-800">6-1반 남1 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">강태윤, 함리우, 이정안</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0507호</span>
+                                <span class="text-emerald-800">6-1반 남2 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">차윤석, 류이레, 유서율</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0508호</span>
+                                <span class="text-emerald-800">6-1반 남3 (2명)</span>
+                            </div>
+                            <p class="text-slate-700">윤승호, 이율중</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0509호</span>
+                                <span class="text-emerald-800">6-1반 남4 (2명)</span>
+                            </div>
+                            <p class="text-slate-700">이하람, 김휘연</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0510호</span>
+                                <span class="text-emerald-800">6-4반 남1 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">강규민, 이호준, 신준혁</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border-2 border-amber-400 bg-amber-50 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-amber-900 mb-1">
+                                <span class="bg-amber-500 text-slate-900 px-2 py-0.5 rounded-md text-[11px]">0515호 (교사실)</span>
+                                <span class="text-amber-800">👨‍🏫 남교사 1</span>
+                            </div>
+                            <p class="text-amber-950 font-semibold">오승영, 이주현(행정주무관)</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0532호</span>
+                                <span class="text-emerald-800">6-4반 남2 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">김동원, 신지호, 정재헌</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0533호</span>
+                                <span class="text-emerald-800">6-4반 남3 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">김수하, 이서준, 홍지후</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0534호</span>
+                                <span class="text-emerald-800">6-4반 남4 (2명)</span>
+                            </div>
+                            <p class="text-slate-700">안현균, 이시윤</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0535호</span>
+                                <span class="text-emerald-800">6-2반 남1 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">복성현, 안지후, 김태환</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0536호</span>
+                                <span class="text-emerald-800">6-2반 남2 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">임준서, 김태완, 정승호</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border-2 border-amber-400 bg-amber-50 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-amber-900 mb-1">
+                                <span class="bg-amber-500 text-slate-900 px-2 py-0.5 rounded-md text-[11px]">0537호 (교사실)</span>
+                                <span class="text-amber-800">👨‍🏫 남교사 2</span>
+                            </div>
+                            <p class="text-amber-950 font-semibold">나환웅(6-2담임), 김진경(6-5담임)</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border-2 border-rose-400 bg-rose-50 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-rose-900 mb-1">
+                                <span class="bg-rose-600 text-white px-2 py-0.5 rounded-md text-[11px]">0538호 (보건/격리)</span>
+                                <span class="text-rose-700">🏥 격리실1 / 보건실</span>
+                            </div>
+                            <p class="text-rose-950 font-semibold">신성미 (보건교사)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floor 6 Grid -->
+                <div class="flr-sec space-y-2 pt-2" data-floor="6">
+                    <h3 class="font-bold text-slate-800 text-sm border-b border-slate-200 pb-1.5 flex items-center justify-between">
+                        <span>🏢 6층 객실 배정표 (남학생 / 남교사3 / 격리실2)</span>
+                        <span class="text-xs font-normal text-slate-500">12개 객실</span>
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 text-xs">
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0606호</span>
+                                <span class="text-emerald-800">6-3반 남1 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">김민석, 윤지후, 최은호</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0607호</span>
+                                <span class="text-emerald-800">6-3반 남2 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">정재윤, 양현일, 최윤호</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0608호</span>
+                                <span class="text-emerald-800">6-3반 남3 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">경서준, 김도훈, 오여준</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0609호</span>
+                                <span class="text-emerald-800">6-3반 남4 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">김재범, 박범성, 송승민</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0610호</span>
+                                <span class="text-emerald-800">6-2반 남3 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">김수현, 장하준, 강서준</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0632호</span>
+                                <span class="text-emerald-800">6-2반 남4 (2명)</span>
+                            </div>
+                            <p class="text-slate-700">이윤범, 김주호</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0633호</span>
+                                <span class="text-emerald-800">6-5반 남1 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">김도현, 김예준, 박리환</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0634호</span>
+                                <span class="text-emerald-800">6-5반 남2 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">구준서, 황윤서, 김태완</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0635호</span>
+                                <span class="text-emerald-800">6-5반 남3 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">김도하, 김지후, 장준석</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-[11px]">0636호</span>
+                                <span class="text-emerald-800">6-5반 남4 (2명)</span>
+                            </div>
+                            <p class="text-slate-700">손승민, 이세영</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border-2 border-amber-400 bg-amber-50 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-amber-900 mb-1">
+                                <span class="bg-amber-500 text-slate-900 px-2 py-0.5 rounded-md text-[11px]">0637호 (교사실)</span>
+                                <span class="text-amber-800">👨‍🏫 남교사 3</span>
+                            </div>
+                            <p class="text-amber-950 font-semibold">박현수, 기우성</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-slate-300 bg-slate-100 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-slate-500 text-white px-2 py-0.5 rounded-md text-[11px]">0638호</span>
+                                <span class="text-slate-600">🏥 격리실2 (비상 예비실)</span>
+                            </div>
+                            <p class="text-slate-500 font-medium">비상 상황 대기</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floor 7 Grid -->
+                <div class="flr-sec space-y-2 pt-2" data-floor="7">
+                    <h3 class="font-bold text-slate-800 text-sm border-b border-slate-200 pb-1.5 flex items-center justify-between">
+                        <span>🏢 7층 객실 배정표 (여학생 / 여교사3)</span>
+                        <span class="text-xs font-normal text-slate-500">4개 객실</span>
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 text-xs">
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0706호</span>
+                                <span class="text-blue-700">6-1반 여3 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">김서안, 최윤아, 박세아</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0707호</span>
+                                <span class="text-blue-700">6-1반 여4 (3명)</span>
+                            </div>
+                            <p class="text-slate-700">정가연, 설예원, 민세연</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-slate-800 mb-1">
+                                <span class="bg-blue-600 text-white px-2 py-0.5 rounded-md text-[11px]">0708호</span>
+                                <span class="text-blue-700">6-1반 여5 (2명)</span>
+                            </div>
+                            <p class="text-slate-700">서예인, 박지은</p>
+                        </div>
+                        <div class="p-2.5 rounded-xl border-2 border-amber-400 bg-amber-50 shadow-sm">
+                            <div class="flex justify-between items-center font-bold text-amber-900 mb-1">
+                                <span class="bg-amber-500 text-slate-900 px-2 py-0.5 rounded-md text-[11px]">0716호 (교사실)</span>
+                                <span class="text-amber-800">👩‍🏫 여교사 3 (업무담당)</span>
+                            </div>
+                            <p class="text-amber-950 font-semibold">조은아 (6-1담임 / 총괄업무)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Night Patrol Duty Schedule -->
+                <div class="border-t border-slate-200 pt-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm flex items-center">
+                        <i class="fa-solid fa-clock text-indigo-600 mr-2"></i>
+                        🌙 야간 생활지도 근무표
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-xs text-center border-collapse">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700 font-bold border-y border-slate-200">
+                                    <th class="p-2.5">날짜</th>
+                                    <th class="p-2.5">근무 시간</th>
+                                    <th class="p-2.5 text-left">담당 교사</th>
+                                    <th class="p-2.5 text-left">주요 역할 및 지휘 사항</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 text-slate-700">
+                                <tr>
+                                    <td class="p-2.5 font-bold bg-slate-50" rowspan="4">10/20 (화)</td>
+                                    <td class="p-2.5 font-semibold text-brand-blue">22:00 ~ 24:00</td>
+                                    <td class="p-2.5 text-left font-medium">조은아, 송민경, 백영미</td>
+                                    <td class="p-2.5 text-left">취침 점호, 복도 정숙 지도, 소란 통제</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-semibold text-brand-blue">00:00 ~ 02:10</td>
+                                    <td class="p-2.5 text-left font-medium">나환웅, 김진경, 오승영</td>
+                                    <td class="p-2.5 text-left">외부인 출입 통제, 층별 소음 및 안전 순찰</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-semibold text-brand-blue">02:10 ~ 04:20</td>
+                                    <td class="p-2.5 text-left font-medium">기우성, 박현수, 신성미</td>
+                                    <td class="p-2.5 text-left">심야 비상 대기, 응급 환자 발생 대비</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-semibold text-brand-blue">04:20 ~ 07:00</td>
+                                    <td class="p-2.5 text-left font-medium">전교사 순번</td>
+                                    <td class="p-2.5 text-left">기상 지도 및 아침 식사 지도 준비</td>
+                                </tr>
+                                <tr class="border-t-2 border-slate-300">
+                                    <td class="p-2.5 font-bold bg-slate-50" rowspan="3">10/21 (수)</td>
+                                    <td class="p-2.5 font-semibold text-brand-blue">22:00 ~ 24:00</td>
+                                    <td class="p-2.5 text-left font-medium">조은아, 송민경, 백영미</td>
+                                    <td class="p-2.5 text-left">야간 인원 점검, 건강 이상자 체크</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-semibold text-brand-blue">00:00 ~ 02:10</td>
+                                    <td class="p-2.5 text-left font-medium">나환웅, 김진경, 오승영</td>
+                                    <td class="p-2.5 text-left">객실 취침 상태 확인, 비상 연락망 유지</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-semibold text-brand-blue">02:10 ~ 04:20</td>
+                                    <td class="p-2.5 text-left font-medium">기우성, 박현수, 신성미</td>
+                                    <td class="p-2.5 text-left">야간 순찰 및 취침 안전 확인</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 5: SAFETY & EVACUATION ================= -->
+        <section id="sec-safety" class="tab-content space-y-4 hidden">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <h2 class="font-header font-bold text-lg text-rose-700 flex items-center">
+                        <i class="fa-solid fa-shield-cat text-rose-600 mr-2"></i>
+                        안전수칙, 대피 경로 및 응급 대응 프로토콜
+                    </h2>
+                    <span class="text-xs bg-rose-100 text-rose-800 px-3 py-1 rounded-xl font-bold">비상대비 필수</span>
+                </div>
+
+                <!-- Fire Drill Notice -->
+                <div class="bg-rose-50 border-2 border-rose-300 p-4 rounded-2xl space-y-2">
+                    <h3 class="font-bold text-rose-900 text-sm flex items-center">
+                        <i class="fa-solid fa-fire-extinguisher mr-2 text-rose-600"></i>
+                        🔥 숙소 객실 화재 대피 훈련 계획
+                    </h3>
+                    <p class="text-xs text-rose-800 leading-relaxed">
+                        • <strong>일시:</strong> 2026.10.20(화) 19:10 ~ 19:30 (숙소 체크인 직후)<br>
+                        • <strong>장소:</strong> 제주호텔 휘슬락 각 층 객실 및 비상계단<br>
+                        • <strong>지도사항:</strong> 객실 내 비상구 위치 확인, 화재 경보기 소리 숙지, 젖은 수건으로 입/코를 막고 낮은 자세로 비상계단을 통해 1층 야외 주차장으로 대피 실습.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
+                        <h4 class="font-bold text-slate-800 flex items-center text-sm">
+                            <i class="fa-solid fa-bus text-amber-500 mr-1.5"></i> 버스 이동 중 안전수칙
+                        </h4>
+                        <ul class="list-disc list-inside space-y-1 text-slate-600 leading-relaxed">
+                            <li>전 좌석 안전벨트 필수 착용 상태 점검</li>
+                            <li>운행 중 학생의 이탈 및 서있는 행위 절대 금지</li>
+                            <li>창문 밖으로 손/머리 내밀기 금지 지도</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
+                        <h4 class="font-bold text-slate-800 flex items-center text-sm">
+                            <i class="fa-solid fa-water text-blue-500 mr-1.5"></i> 정방폭포 & 제주제트 안전수칙
+                        </h4>
+                        <ul class="list-disc list-inside space-y-1 text-slate-600 leading-relaxed">
+                            <li>폭포 관람 시 미끄러운 바위 및 통제선 유의</li>
+                            <li>제주제트 승하차 시 발빠짐 및 손잡이 미착용 주의</li>
+                            <li>구명조끼 밀착 착용 상태 교사 재확인</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Visual Bus Data Extracted from Official PDF
+        const busData = {
+            1: {
+                title: "제주 1호차 (여학생 28명 + 인솔 4명)",
+                insol: "인솔: 최순이, 오승영, 이주현, 조은아 | 안전요원 1명",
+                seats: {
+                    1: "빈좌석", 2: "빈좌석", 3: "빈좌석", 4: "빈좌석",
+                    5: "4강다윤", 6: "4최보나", 7: "5유혜선", 8: "5류수연",
+                    9: "4오아현", 10: "4오예진", 11: "5육세연", 12: "5김가은",
+                    13: "4최율희", 14: "4권은비", 15: "빈좌석", 16: "5정다은",
+                    17: "3이예담", 18: "빈좌석", 19: "3홍소율", 20: "3음선우",
+                    21: "3정다은", 22: "3심민지", 23: "2유이레", 24: "2조여원",
+                    25: "1김하람", 26: "1박세아", 27: "2박소율", 28: "2장민정",
+                    29: "1설예원", 30: "1김서안", 31: "2이율희", 32: "2연율",
+                    33: "1윤이나", 34: "1최윤아", 35: "빈좌석", 36: "빈좌석",
+                    37: "빈좌석", 38: "빈좌석", 39: "빈좌석", 40: "빈좌석",
+                    41: "빈좌석", 42: "빈좌석", 43: "빈좌석", 44: "빈좌석", 45: "빈좌석"
+                }
+            },
+            2: {
+                title: "제주 2호차 (여학생 28명 + 인솔 3명)",
+                insol: "인솔: 송민경, 백영미, 신성미 | 안전요원 1, 사진작가 1",
+                seats: {
+                    1: "빈좌석", 2: "빈좌석", 3: "빈좌석", 4: "빈좌석",
+                    5: "3이시윤", 6: "3이서율", 7: "2손예원", 8: "2노지아",
+                    9: "3성아윤", 10: "3신예진", 11: "2김지원", 12: "2김지윤",
+                    13: "3최태린", 14: "3권하람", 15: "2윤서율", 16: "빈좌석",
+                    17: "4이하린", 18: "4임지효", 19: "5신미경", 20: "빈좌석",
+                    21: "4권예준", 22: "4한예원", 23: "5고채원", 24: "5유예은",
+                    25: "4이은솔", 26: "빈좌석", 27: "5이다정", 28: "5이가영",
+                    29: "1정가연", 30: "1양다영", 31: "1민세연", 32: "1윤서아",
+                    33: "1서예인", 34: "1박지은", 35: "1김하람", 36: "빈좌석",
+                    37: "빈좌석", 38: "빈좌석", 39: "빈좌석", 40: "빈좌석",
+                    41: "빈좌석", 42: "빈좌석", 43: "빈좌석", 44: "빈좌석", 45: "빈좌석"
+                }
+            },
+            3: {
+                title: "제주 3호차 (남학생 27명 + 인솔 2명)",
+                insol: "인솔: 나환웅, 박현수 | 안전요원 2명",
+                seats: {
+                    1: "빈좌석", 2: "빈좌석", 3: "빈좌석", 4: "빈좌석",
+                    5: "1이정안", 6: "1강태윤", 7: "3오여준", 8: "3김도훈",
+                    9: "1차윤석", 10: "1류이레", 11: "3박범성", 12: "3송승민",
+                    13: "1함리우", 14: "빈좌석", 15: "3경서준", 16: "3최윤호",
+                    17: "4신지호", 18: "4이호준", 19: "5이세영", 20: "5손승민",
+                    21: "4김동원", 22: "4정재헌", 23: "5김태완", 24: "5황윤서",
+                    25: "4신준혁", 26: "빈좌석", 27: "5구준서", 28: "빈좌석",
+                    29: "2임준서", 30: "2복성현", 31: "2정승호", 32: "2김태완",
+                    33: "2이윤범", 34: "2김주호", 35: "빈좌석", 36: "빈좌석",
+                    37: "빈좌석", 38: "빈좌석", 39: "빈좌석", 40: "빈좌석",
+                    41: "빈좌석", 42: "빈좌석", 43: "빈좌석", 44: "빈좌석", 45: "빈좌석"
+                }
+            },
+            4: {
+                title: "제주 4호차 (남학생 28명 + 인솔 2명)",
+                insol: "인솔: 김진경, 기우성 | 안전요원 1명",
+                seats: {
+                    1: "빈좌석", 2: "빈좌석", 3: "빈좌석", 4: "빈좌석",
+                    5: "3윤지후", 6: "3최은호", 7: "2장하준", 8: "2강서준",
+                    9: "3김민석", 10: "3양현일", 11: "2안지후", 12: "2김태환",
+                    13: "3김재범", 14: "3정재윤", 15: "2김수현", 16: "빈좌석",
+                    17: "1우하람", 18: "1윤승호", 19: "4강규민", 20: "4홍지후",
+                    21: "1김휘연", 22: "1유서율", 23: "4김수하", 24: "4이서준",
+                    25: "1이율중", 26: "빈좌석", 27: "4안현균", 28: "4이시윤",
+                    29: "5박리환", 30: "5김도현", 31: "5김도하", 32: "5김지후",
+                    33: "5장준석", 34: "5김예준", 35: "빈좌석", 36: "빈좌석",
+                    37: "빈좌석", 38: "빈좌석", 39: "빈좌석", 40: "빈좌석",
+                    41: "빈좌석", 42: "빈좌석", 43: "빈좌석", 44: "빈좌석", 45: "빈좌석"
+                }
+            }
+        };
+
+        // EXPOSE TAB SWITCHING FUNCTION GLOBALLY TO FIX ReferenceError
+        window.switchTab = function(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(el => el.classList.add('hidden'));
+
+            // Remove active style from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('tab-active'));
+
+            // Show selected section
+            const targetSec = document.getElementById(`sec-${tabName}`);
+            if (targetSec) {
+                targetSec.classList.remove('hidden');
+            }
+
+            // Highlight active button
+            const targetBtn = document.getElementById(`tab-${tabName}`);
+            if (targetBtn) {
+                targetBtn.classList.add('tab-active');
+            }
+
+            // Trigger child renders if needed
+            if (tabName === 'vehicles') {
+                window.switchBusMap(1);
+            }
+        };
+
+        // Day Filter Helper for Itinerary
+        window.setDayFilter = function(day) {
+            for (let i = 1; i <= 3; i++) {
+                const card = document.getElementById(`dayCard-${i}`);
+                const btn = document.getElementById(`dayFilter-${i}`);
+                if (i === day) {
+                    if (card) card.classList.remove('hidden');
+                    if (btn) btn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold bg-brand-blue text-white shadow';
+                } else {
+                    if (card) card.classList.add('hidden');
+                    if (btn) btn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200';
+                }
+            }
+        };
+
+        // Floor Filter Helper for Hotel Rooms
+        window.filterFloor = function(floor) {
+            const sections = document.querySelectorAll('.flr-sec');
+            const btns = document.querySelectorAll('.flr-btn');
+
+            btns.forEach(b => {
+                b.className = 'flr-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200';
+            });
+
+            const activeBtn = document.getElementById(`flrBtn-${floor}`);
+            if (activeBtn) {
+                activeBtn.className = 'flr-btn px-3 py-1.5 rounded-xl bg-brand-blue text-white shadow';
+            }
+
+            sections.forEach(sec => {
+                if (floor === 'all' || sec.getAttribute('data-floor') === floor) {
+                    sec.classList.remove('hidden');
+                } else {
+                    sec.classList.add('hidden');
+                }
+            });
+        };
+
+        // Render Visual Bus Diagram
+        window.switchBusMap = function(busNum) {
+            for (let i = 1; i <= 4; i++) {
+                const btn = document.getElementById(`busMapBtn-${i}`);
+                if (btn) {
+                    if (i === busNum) {
+                        btn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold bg-brand-teal text-white shadow';
+                    } else {
+                        btn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200';
+                    }
+                }
+            }
+
+            const data = busData[busNum];
+            if (!data) return;
+
+            const badge = document.getElementById('busNumberBadge');
+            const title = document.getElementById('busTitleText');
+            const insol = document.getElementById('busInsolText');
+
+            if (badge) badge.innerText = busNum;
+            if (title) title.innerText = data.title;
+            if (insol) insol.innerText = data.insol;
+
+            const gridContainer = document.getElementById('busSeatsGrid');
+            if (!gridContainer) return;
+
+            gridContainer.innerHTML = '';
+
+            // Rows 1 to 10
+            for (let r = 1; r <= 10; r++) {
+                const s1 = (r - 1) * 4 + 1;
+                const s2 = (r - 1) * 4 + 2;
+                const s3 = (r - 1) * 4 + 3;
+                const s4 = (r - 1) * 4 + 4;
+
+                const rowHtml = `
+                    <div class="grid grid-cols-5 gap-2 items-center text-center">
+                        <div class="col-span-2 grid grid-cols-2 gap-1.5">
+                            ${renderSeatCard(s1, data.seats[s1])}
+                            ${renderSeatCard(s2, data.seats[s2])}
+                        </div>
+                        <div class="text-[10px] text-slate-300 font-mono flex items-center justify-center">통로</div>
+                        <div class="col-span-2 grid grid-cols-2 gap-1.5">
+                            ${renderSeatCard(s3, data.seats[s3])}
+                            ${renderSeatCard(s4, data.seats[s4])}
+                        </div>
+                    </div>
+                `;
+                gridContainer.insertAdjacentHTML('beforeend', rowHtml);
+            }
+
+            // Row 11 (Rear 5 Seats: 41 ~ 45)
+            const rearHtml = `
+                <div class="pt-1 grid grid-cols-5 gap-1.5 text-center">
+                    ${renderSeatCard(41, data.seats[41])}
+                    ${renderSeatCard(42, data.seats[42])}
+                    ${renderSeatCard(43, data.seats[43])}
+                    ${renderSeatCard(44, data.seats[44])}
+                    ${renderSeatCard(45, data.seats[45])}
+                </div>
+            `;
+            gridContainer.insertAdjacentHTML('beforeend', rearHtml);
+        };
+
+        function renderSeatCard(seatNum, occupant) {
+            if (!occupant || occupant === "빈좌석") {
+                return `
+                    <div class="bg-white border border-slate-200 p-2 rounded-xl text-[11px] text-slate-300 shadow-sm flex flex-col justify-between h-12">
+                        <span class="text-[9px] text-slate-300 font-bold self-start">${seatNum}</span>
+                        <span class="font-normal text-slate-300">-</span>
+                    </div>
+                `;
+            }
+
+            return `
+                <div class="bg-blue-50/90 border border-blue-200 p-1.5 rounded-xl text-xs text-blue-950 font-bold shadow-sm flex flex-col justify-between h-12 hover:bg-blue-100 transition">
+                    <span class="text-[9px] text-blue-400 font-bold self-start">${seatNum}</span>
+                    <span class="truncate leading-tight">${occupant}</span>
+                </div>
+            `;
+        }
+
+        // Initialize Default View on Page Load
+        window.addEventListener('DOMContentLoaded', () => {
+            window.switchTab('overview');
+        });
+    </script>
+</body>
+</html>
